@@ -27,3 +27,13 @@ jobs:
         python3 -m pip install -U pip setuptools   
         python3 -m pip install matplotlib
         python3 main.py
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: plot-images
+        path: output/plots/**/*.png
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: CSV Files
+        path: output/csv/**/*.csv
