@@ -1,0 +1,25 @@
+name: Daily Metrics
+
+on: [push]
+
+jobs:
+  run-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Install Python
+      run: |
+        sudo apt-get update
+        sudo apt-get install python3 -y
+        sudo apt-get install python3-pip -y
+    - name: Change directory to scripts
+      run: |
+        cd scripts
+        sudo chmod u+x *.sh
+        ./update.sh
+        cd ../src
+        python3 -m pip install -U pip setuptools   
+        python3 -m pip install matplotlib
+        python3 main.py
