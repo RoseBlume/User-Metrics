@@ -5,7 +5,8 @@ on: [push]
 jobs:
   run-scripts:
     runs-on: ubuntu-latest
-
+    env:
+      SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_TOKEN }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
